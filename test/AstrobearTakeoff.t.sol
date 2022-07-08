@@ -124,6 +124,7 @@ contract AstrobearTakeoffTest is Test {
 
     function testOwnerMint() public {
         nftContract.ownerMint(100);
+        nftContract.ownerOf(1869); // first token should start at 1869 after non reserved supply
     }
 
     function testOwnerMintRevertsOnMaxSupply() public {

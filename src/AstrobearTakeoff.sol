@@ -128,7 +128,8 @@ contract AstrobearTakeoff is ERC721, Owned, PaymentSplitter, ReentrancyGuard {
         if (mintedSupplyOwner + amount > reservedSupply) revert NoSupplyLeft();
 
         for (uint i=0; i<amount; i++) {
-            _mint(msg.sender, ++mintedSupplyOwner);
+            _mint(msg.sender, totalSupply+i);
+            ++mintedSupplyOwner;
         }
     }
 
