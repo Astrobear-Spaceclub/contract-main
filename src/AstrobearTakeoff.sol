@@ -12,7 +12,6 @@ contract AstrobearTakeoff is ERC721, Owned, PaymentSplitter, ReentrancyGuard {
     error SaleNotStarted();
     error NotPartOfList();
     error PaymentNotCorrect();
-    error NoContractMinting();
     error AlreadyMintedMaxAmount();
     error NoSupplyLeft();
     error NotOwnerOfToken();
@@ -76,7 +75,6 @@ contract AstrobearTakeoff is ERC721, Owned, PaymentSplitter, ReentrancyGuard {
 
     function mint(uint256 amount) external payable nonReentrant {
         if (saleState == SaleState.Ended) revert SaleNotStarted();
-        if (tx.origin != msg.sender) revert NoContractMinting();
         if (msg.value < salePriceGenesis * amount) revert PaymentNotCorrect();
         if (totalSupply <= mintedSupply + amount) revert NoSupplyLeft();
 
