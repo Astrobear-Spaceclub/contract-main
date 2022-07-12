@@ -18,12 +18,12 @@ contract AstrobearTakeoff is ERC721, Owned, PaymentSplitter, ReentrancyGuard {
     error NotOwnerOfToken();
     error AlreadyClaimedSculpture();
 
-    uint256 public reservedSupply = 100;
-    uint256 public immutable totalSupply = 1969 - reservedSupply;
+    uint256 public constant reservedSupply = 100;
+    uint256 public constant totalSupply = 1969 - reservedSupply;
     uint256 public mintedSupply = 0;
     uint256 public mintedSupplyOwner = 0;
 
-    uint8 public maxMintPerWallet = 4;
+    uint8 public constant maxMintPerWallet = 4;
 
     mapping(uint256 => bool) public claimedSculpture;
 
