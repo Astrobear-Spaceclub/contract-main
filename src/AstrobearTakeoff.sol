@@ -149,16 +149,24 @@ contract AstrobearTakeoff is ERC721, Owned, PaymentSplitter, ReentrancyGuard {
         baseUriClaimed = newBaseUriClaimed;
     }
 
-    function addAddressToGenesisList(address genesisAddress, uint256 amount) external onlyOwner {
-        genesisAddresses[genesisAddress] = amount;
+    function addAddressesToGenesisList(address[] memory _genesisAddresses, uint256[] memory amount) external onlyOwner {
+        unchecked {
+            for (uint i=0; i<_genesisAddresses.length; i++) {
+                genesisAddresses[_genesisAddresses[i]] = amount[i];
+            }
+        }
     }
 
     function changeAmountOfAddressInGenesisList(address genesisAddress, uint256 amount) external onlyOwner {
         genesisAddresses[genesisAddress] = amount;
     }
 
-    function addAddressToWhitelist(address whitelistAddress, uint256 amount) external onlyOwner {
-        whitelistAddresses[whitelistAddress] = amount;
+    function addAddressesToWhitelist(address[] memory _whitelistAddresses, uint256[] memory amount) external onlyOwner {
+        unchecked {
+            for (uint i=0; i<_whitelistAddresses.length; i++) {
+                whitelistAddresses[_whitelistAddresses[i]] = amount[i];
+            }
+        }
     }
 
     function changeAmountOfAddressInWhitelist(address whitelistAddress, uint256 amount) external onlyOwner {

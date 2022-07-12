@@ -69,7 +69,11 @@ contract AstrobearTakeoffTest is Test {
 
     function testMintOneGenesis() public {
         nftContract.setSaleState(AstrobearTakeoff.SaleState.Genesis);
-        nftContract.addAddressToGenesisList(address(1), 1);
+        address[] memory addresses = new address[](1);
+        addresses[0] = address(1);
+        uint256[] memory amounts = new uint256[](1);
+        amounts[0] = uint256(1);
+        nftContract.addAddressesToGenesisList(addresses, amounts);
 
         vm.deal(address(1), 0.05 ether);
         vm.prank(address(1));
@@ -80,7 +84,11 @@ contract AstrobearTakeoffTest is Test {
 
     function testMintSeveralGenesis() public {
         nftContract.setSaleState(AstrobearTakeoff.SaleState.Genesis);
-        nftContract.addAddressToGenesisList(address(1), 3);
+        address[] memory addresses = new address[](1);
+        addresses[0] = address(1);
+        uint256[] memory amounts = new uint256[](1);
+        amounts[0] = uint256(3);
+        nftContract.addAddressesToGenesisList(addresses, amounts);
 
         vm.deal(address(1), 0.15 ether);
         vm.startPrank(address(1));
