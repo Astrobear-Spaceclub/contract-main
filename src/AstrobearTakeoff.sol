@@ -76,8 +76,8 @@ contract AstrobearTakeoff is ERC721, Owned, PaymentSplitter, ReentrancyGuard {
 
     function mint(uint256 amount) external payable nonReentrant {
         if (saleState == SaleState.Ended) revert SaleNotStarted();
-        if (tx.origin == msg.sender) revert NoContractMinting();
-        if (msg.value < salePriceGenesis) revert PaymentNotCorrect();
+        if (tx.origin != msg.sender) revert NoContractMinting();
+        if (msg.value < salePriceGenesis * amount) revert PaymentNotCorrect();
         if (totalSupply <= mintedSupply + amount) revert NoSupplyLeft();
 
         if (saleState == SaleState.Genesis) {
@@ -92,7 +92,7 @@ contract AstrobearTakeoff is ERC721, Owned, PaymentSplitter, ReentrancyGuard {
         }
 
         if (saleState == SaleState.Whitelist) {
-            if (msg.value < salePriceWhitelist) revert PaymentNotCorrect();
+            if (msg.value < salePriceWhitelist * amount) revert PaymentNotCorrect();
             if (whitelistAddressesMinted[msg.sender] + amount > whitelistAddresses[msg.sender]) revert AlreadyMintedMaxAmount();
 
 
@@ -105,7 +105,7 @@ contract AstrobearTakeoff is ERC721, Owned, PaymentSplitter, ReentrancyGuard {
         }
 
         if (saleState == SaleState.Public) {
-            if (msg.value < salePricePublic) revert PaymentNotCorrect();
+            if (msg.value < salePricePublic * amount) revert PaymentNotCorrect();
             if (publicAddressesMinted[msg.sender] + amount > maxMintPerWallet) revert AlreadyMintedMaxAmount();
 
             for (uint i=0; i<amount; i++) {

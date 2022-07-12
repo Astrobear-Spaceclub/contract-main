@@ -105,7 +105,7 @@ contract AstrobearTakeoffTest is Test {
     function testClaimingOfSculptureAndTokenUriForClaimed() public {
         nftContract.setSaleState(AstrobearTakeoff.SaleState.Public);
         nftContract.setBaseUriClaimed("ipfs://QmbUQHnXWgSgpPke6gcQvpaq2z6yeaHzZRvza7cQ2CiViC/");
-        nftContract.mint{value: 0.1 ether}(2);
+        nftContract.mint{value: 0.2 ether}(2);
         nftContract.claimSculpture(1);
 
         assertEq("ipfs://QmbUQHnXWgSgpPke6gcQvpaq2z6yeaHzZRvza7cQ2CiViC/1", nftContract.tokenURI(1));
@@ -113,7 +113,7 @@ contract AstrobearTakeoffTest is Test {
 
     function testClaimingSculptureRevertsForWrongOwner() public {
         nftContract.setSaleState(AstrobearTakeoff.SaleState.Public);
-        nftContract.mint{value: 0.1 ether}(2);
+        nftContract.mint{value: 0.2 ether}(2);
         nftContract.claimSculpture(1);
 
         vm.prank(address(1));
@@ -123,7 +123,7 @@ contract AstrobearTakeoffTest is Test {
 
     function testClaimingSculptureRevertsForAlreadyClaimed() public {
         nftContract.setSaleState(AstrobearTakeoff.SaleState.Public);
-        nftContract.mint{value: 0.1 ether}(2);
+        nftContract.mint{value: 0.2 ether}(2);
 
         nftContract.claimSculpture(1);
         vm.expectRevert(abi.encodeWithSignature("AlreadyClaimedSculpture()"));
