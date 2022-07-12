@@ -17,7 +17,7 @@ contract AstrobearTakeoffScript is Script {
 
         AstrobearTakeoff nftContract = new AstrobearTakeoff(
             "Astrobear",
-            "AST-TAKEOFF",
+            "ASTROBEAR-TAKEOFF",
             payees,
             shares,
             0.05 ether,
