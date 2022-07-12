@@ -27,12 +27,12 @@ contract AstrobearTakeoff is ERC721, Owned, PaymentSplitter, ReentrancyGuard {
 
     mapping(uint256 => bool) public claimedSculpture;
 
-    mapping(address => uint256) private genesisAddresses;
-    mapping(address => uint256) private whitelistAddresses;
+    mapping(address => uint256) public genesisAddresses;
+    mapping(address => uint256) public whitelistAddresses;
 
-    mapping(address => uint256) private genesisAddressesMinted;
-    mapping(address => uint256) private whitelistAddressesMinted;
-    mapping(address => uint256) private publicAddressesMinted;
+    mapping(address => uint256) public genesisAddressesMinted;
+    mapping(address => uint256) public whitelistAddressesMinted;
+    mapping(address => uint256) public publicAddressesMinted;
 
     string public baseUri;
     string public baseUriClaimed;
