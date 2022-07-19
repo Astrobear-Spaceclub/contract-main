@@ -17,7 +17,7 @@ contract AstrobearTakeoff is ERC721, Owned, PaymentSplitter, ReentrancyGuard {
     error NotOwnerOfToken();
     error AlreadyClaimedSculpture();
 
-    uint256 public constant reservedSupply = 100;
+    uint256 public constant reservedSupply = 15;
     uint256 public constant totalSupply = 1969 - reservedSupply;
     uint256 public mintedSupply = 0;
     uint256 public mintedSupplyOwner = 0;
@@ -137,10 +137,6 @@ contract AstrobearTakeoff is ERC721, Owned, PaymentSplitter, ReentrancyGuard {
 
     function setBaseUri(string memory newBaseUri) external onlyOwner {
         baseUri = newBaseUri;
-    }
-
-    function revertClaimed(uint256 tokenId) external onlyOwner {
-        claimedSculpture[tokenId] = false;
     }
 
     function setBaseUriClaimed(string memory newBaseUriClaimed) external onlyOwner {
