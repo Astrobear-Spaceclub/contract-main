@@ -20,9 +20,9 @@ contract AstrobearTakeoffScript is Script {
             "ASTROBEAR-TAKEOFF",
             payees,
             shares,
-            0.05 ether,
-            0.075 ether,
-            0.1 ether,
+            0.27 ether,
+            0.41 ether,
+            0.55 ether,
             "ipfs://QmVrbQx6JpPPzoekyoTri2LLWJik5hfhqNjEzwik9T4ndB/"
         );
 
