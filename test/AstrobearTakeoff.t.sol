@@ -29,7 +29,7 @@ contract AstrobearTakeoffTest is Test {
     }
 
     function testSupplies() public {
-        assertEq(uint256(1869), nftContract.totalSupply());
+        assertEq(uint256(1954), nftContract.totalSupply());
     }
 
     function testSaleNotStartedOrEnded() public {
@@ -131,12 +131,12 @@ contract AstrobearTakeoffTest is Test {
     }
 
     function testOwnerMint() public {
-        nftContract.ownerMint(100);
-        nftContract.ownerOf(1869); // first token should start at 1869 after non reserved supply
+        nftContract.ownerMint(15);
+        nftContract.ownerOf(1954); // first token should start at 1869 after non reserved supply
     }
 
     function testOwnerMintRevertsOnMaxSupply() public {
-        nftContract.ownerMint(100);
+        nftContract.ownerMint(15);
         vm.expectRevert(abi.encodeWithSignature("NoSupplyLeft()"));
         nftContract.ownerMint(1);
     }
